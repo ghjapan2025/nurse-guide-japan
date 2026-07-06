@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nurse Guide Japan — Talk to a nurse in English, Spanish & Easy Japanese</title>
+<meta name="description" content="Feeling unwell in Japan? Licensed Japanese nurses guide travelers to the right hospital — by phone, LINE or WhatsApp. English / Español / やさしい日本語.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0E6FD8; --blue-dark:#0A4FA0; --blue-bg:#EAF3FF; --blue-line:#CCE1FA;
+  --sun:#FFB020; --sun-bg:#FFF6E5; --sun-dark:#E08900;
+  --ink:#17293B; --muted:#5A6B7C; --bg:#FFFFFF; --soft:#F6F9FC;
+  --red:#D93025; --red-bg:#FDEDEC;
+  --line-green:#06C755; --wa-green:#25D366;
+  --radius:16px; --shadow:0 6px 24px rgba(14,111,216,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito','Noto Sans JP',sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;padding-bottom:76px}
+img{max-width:100%}
+a{color:var(--blue);text-decoration:none}
+.container{max-width:1060px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+h2{font-size:1.6rem;font-weight:800;text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 36px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--blue-line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;max-width:1060px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;color:var(--ink)}
+.logo .cross{width:30px;height:30px;border-radius:9px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.logo small{display:block;font-size:.62rem;color:var(--muted);font-weight:600;line-height:1.2}
+.lang{display:flex;gap:4px;background:var(--soft);border-radius:99px;padding:4px}
+.lang button{border:0;background:transparent;padding:6px 12px;border-radius:99px;font-family:inherit;font-weight:700;font-size:.8rem;color:var(--muted);cursor:pointer}
+.lang button.active{background:var(--blue);color:#fff}
+.header-cta{display:none}
+@media(min-width:800px){
+  .header-cta{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;font-weight:700;padding:9px 18px;border-radius:99px;font-size:.9rem}
+}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--blue-bg) 0%,#fff 55%,var(--sun-bg) 100%);padding:48px 0 40px}
+.hero-in{display:grid;gap:28px;align-items:center}
+@media(min-width:800px){.hero-in{grid-template-columns:1.15fr .85fr}}
+.badge-es{display:inline-flex;align-items:center;gap:8px;background:var(--sun);color:#5C3B00;font-weight:800;font-size:.85rem;padding:7px 16px;border-radius:99px;box-shadow:0 3px 10px rgba(255,176,32,.35);margin-bottom:16px}
+.hero h1{font-size:1.9rem;font-weight:800;line-height:1.3;margin-bottom:14px}
+@media(min-width:800px){.hero h1{font-size:2.4rem}}
+.hero p.lead{color:var(--muted);font-size:1.05rem;margin-bottom:22px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-family:inherit;font-size:.95rem;padding:13px 22px;border-radius:99px;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-line{background:var(--line-green);color:#fff;box-shadow:0 4px 14px rgba(6,199,85,.35)}
+.btn-wa{background:var(--wa-green);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.35)}
+.btn-call{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(14,111,216,.35)}
+.btn-ghost{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff;border:1px solid var(--blue-line);color:var(--blue-dark);font-size:.78rem;font-weight:700;padding:6px 12px;border-radius:99px}
+
+/* hero visual */
+.hero-art{position:relative;border-radius:24px;background:linear-gradient(145deg,var(--blue) 0%,#3D93EA 100%);min-height:280px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;overflow:hidden}
+/* ↓ 実際の写真に差し替える場合:この div を <img src="photo.jpg"> に置き換え(看護師がスマホで相談対応しているイメージ写真推奨) */
+.hero-art svg{width:82%;max-width:360px}
+.float-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:10px 14px;font-size:.78rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.fc1{top:14px;left:14px;color:var(--ink)}
+.fc2{bottom:14px;right:14px;color:var(--ink)}
+.fc-dot{width:9px;height:9px;border-radius:50%;background:var(--line-green);flex:none}
+
+/* emergency */
+.emergency{background:var(--red-bg);border-top:1px solid #F5C6C2;border-bottom:1px solid #F5C6C2;padding:14px 0}
+.emergency .container{display:flex;gap:12px;align-items:flex-start;font-size:.9rem}
+.emergency strong{color:var(--red)}
+.em-icon{font-size:1.3rem;line-height:1;flex:none}
+
+/* cards */
+.grid{display:grid;gap:16px}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.grid-5{grid-template-columns:repeat(5,1fr)}}
+.card{background:#fff;border:1px solid var(--blue-line);border-radius:var(--radius);padding:22px;box-shadow:0 2px 10px rgba(14,111,216,.05)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:12px}
+.card h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.card p{font-size:.86rem;color:var(--muted)}
+#services{background:var(--soft)}
+
+/* note box */
+.notebox{background:var(--blue-bg);border:1.5px solid var(--blue);border-radius:var(--radius);padding:20px 22px;margin-top:28px;display:flex;gap:14px;align-items:flex-start}
+.notebox .em-icon{color:var(--blue)}
+.notebox p{font-size:.9rem}
+
+/* steps */
+.step{position:relative;background:#fff;border:1px solid var(--blue-line);border-radius:var(--radius);padding:26px 22px 22px;box-shadow:0 2px 10px rgba(14,111,216,.05)}
+.step-num{position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(14,111,216,.4)}
+.step h3{font-size:1rem;font-weight:800;margin:6px 0}
+.step p{font-size:.86rem;color:var(--muted)}
+#how .grid{margin-top:24px}
+
+/* spanish */
+#spanish{background:linear-gradient(145deg,var(--sun-bg),#FFFDF7)}
+.es-wrap{display:grid;gap:24px;align-items:center}
+@media(min-width:800px){.es-wrap{grid-template-columns:1fr 1fr}}
+.es-flag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--sun);color:var(--sun-dark);font-weight:800;padding:7px 16px;border-radius:99px;margin-bottom:14px;font-size:.9rem}
+#spanish h2{text-align:left}
+#spanish .sec-sub{text-align:left;margin:0 0 18px}
+.quote{background:#fff;border-left:5px solid var(--sun);border-radius:12px;padding:18px 20px;box-shadow:0 4px 16px rgba(224,137,0,.12);font-size:.95rem}
+.quote footer{font-size:.78rem;color:var(--muted);margin-top:8px}
+.es-points{list-style:none;margin-top:16px}
+.es-points li{display:flex;gap:10px;font-size:.9rem;margin-bottom:10px}
+.es-points .ck{color:var(--sun-dark);font-weight:800;flex:none}
+
+/* pricing */
+.price-card{position:relative;text-align:center;padding-top:30px}
+.price-card .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--sun);color:#5C3B00;font-size:.72rem;font-weight:800;padding:4px 14px;border-radius:99px;white-space:nowrap}
+.price-card.popular{border:2px solid var(--blue);box-shadow:var(--shadow)}
+.price{font-size:2rem;font-weight:800;color:var(--blue);margin:6px 0 2px}
+.price small{font-size:.85rem;color:var(--muted);font-weight:600}
+.price-card ul{list-style:none;text-align:left;margin:14px 0 18px}
+.price-card li{font-size:.85rem;color:var(--muted);padding:5px 0;display:flex;gap:8px}
+.price-card li .ck{color:var(--blue);font-weight:800;flex:none}
+.price-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:18px}
+#pricing .grid{margin-top:30px}
+
+/* faq */
+#faq{background:var(--soft)}
+details{background:#fff;border:1px solid var(--blue-line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+summary{cursor:pointer;font-weight:700;padding:16px 44px 16px 18px;font-size:.92rem;position:relative;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--blue);font-size:1.3rem;font-weight:800}
+details[open] summary::after{content:"−"}
+details p{padding:0 18px 16px;font-size:.87rem;color:var(--muted)}
+
+/* notice */
+.notice{background:#fff;border:1px solid var(--blue-line);border-radius:var(--radius);padding:24px;font-size:.85rem;color:var(--muted)}
+.notice ul{margin:8px 0 0 20px}
+.notice li{margin-bottom:6px}
+
+/* contact */
+#contact{background:linear-gradient(160deg,var(--blue-bg),#fff)}
+.contact-grid{display:grid;gap:24px}
+@media(min-width:840px){.contact-grid{grid-template-columns:1fr 1fr}}
+.contact-btns{display:grid;gap:12px}
+.contact-btn{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--blue-line);border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(14,111,216,.06);transition:transform .15s}
+.contact-btn:hover{transform:translateY(-2px)}
+.contact-btn .bi{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex:none}
+.bi-line{background:var(--line-green)}.bi-wa{background:var(--wa-green)}.bi-tel{background:var(--blue)}.bi-mail{background:var(--sun)}
+.contact-btn b{display:block;color:var(--ink);font-size:.95rem}
+.contact-btn span{font-size:.78rem;color:var(--muted)}
+form{background:#fff;border:1px solid var(--blue-line);border-radius:var(--radius);padding:24px;box-shadow:0 2px 10px rgba(14,111,216,.06)}
+form h3{font-size:1.05rem;margin-bottom:14px}
+label{display:block;font-size:.8rem;font-weight:700;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--blue-line);border-radius:10px;font-family:inherit;font-size:.9rem;background:var(--soft)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+form .btn{width:100%;margin-top:18px}
+.hours{font-size:.82rem;color:var(--muted);margin-top:14px;text-align:center}
+
+/* footer */
+footer.site{background:var(--ink);color:#B9C7D4;padding:36px 0 32px;font-size:.8rem}
+footer.site .logo{color:#fff;margin-bottom:12px}
+footer.site .logo .cross{background:var(--sun);color:#5C3B00}
+footer.site p{max-width:640px}
+
+/* sticky mobile bar */
+.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--blue-line);display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(0,0,0,.08)}
+.mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:800;font-size:.82rem;color:#fff;border-radius:12px;padding:11px 4px}
+.mb-line{background:var(--line-green)}.mb-wa{background:var(--wa-green)}.mb-tel{background:var(--blue)}
+@media(min-width:800px){.mobile-bar{display:none}body{padding-bottom:0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <div class="logo">
+      <div class="cross">✚</div>
+      <div>Nurse Guide Japan<small data-i18n="logo_sub">Nurse-led medical navigation for travelers</small></div>
+    </div>
+    <nav class="lang" aria-label="Language">
+      <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="lang-es" onclick="setLang('es')">ES</button>
+      <button id="lang-ja" onclick="setLang('ja')">やさしい日本語</button>
+    </nav>
+    <a class="header-cta" href="#contact">📞 <span data-i18n="nav_cta">Contact a nurse</span></a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container hero-in">
+    <div>
+      <span class="badge-es">🇪🇸 ¡Hablamos español! <span style="opacity:.75">· English OK · 日本語</span></span>
+      <h1 data-i18n="hero_h1">Feeling unwell during your trip to Japan?</h1>
+      <p class="lead" data-i18n="hero_lead">Talk to a licensed Japanese nurse by phone or online — in English, Spanish, or easy Japanese. We listen to your symptoms and guide you to the right hospital, calmly and clearly.</p>
+      <div class="cta-row">
+        <!-- TODO: 実際のLINE公式アカウントURL / WhatsApp番号 / 電話番号に差し替えてください -->
+        <a class="btn btn-line" href="https://line.me/R/ti/p/@nurseguidejp" target="_blank" rel="noopener">💬 LINE</a>
+        <a class="btn btn-wa" href="https://wa.me/819000000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn btn-call" href="tel:+819000000000">📞 <span data-i18n="cta_call">Call now</span></a>
+      </div>
+      <div class="chips">
+        <span class="chip" data-i18n="chip1">✓ Licensed Japanese nurses</span>
+        <span class="chip" data-i18n="chip2">✓ 8:00–22:00 JST, every day</span>
+        <span class="chip" data-i18n="chip3">✓ Reply within 10 min (target)</span>
+      </div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Nurse consultation illustration">
+      <div class="float-card fc1"><span class="fc-dot"></span><span data-i18n="art1">Nurse online now</span></div>
+      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <circle cx="100" cy="80" r="64" fill="#ffffff" opacity=".14"/>
+        <circle cx="100" cy="80" r="46" fill="#ffffff" opacity=".18"/>
+        <rect x="72" y="34" width="56" height="96" rx="12" fill="#fff"/>
+        <rect x="78" y="46" width="44" height="60" rx="8" fill="#EAF3FF"/>
+        <circle cx="100" cy="66" r="11" fill="#0E6FD8"/>
+        <path d="M84 100c2-10 8-15 16-15s14 5 16 15" stroke="#0E6FD8" stroke-width="5" stroke-linecap="round"/>
+        <rect x="95" y="61" width="10" height="10" rx="1.5" fill="#fff"/>
+        <rect x="98" y="58" width="4" height="16" rx="1.5" fill="#fff"/>
+        <circle cx="100" cy="118" r="5" fill="#CCE1FA"/>
+        <path d="M148 52c8 0 14 6 14 13 0 10-14 19-14 19s-14-9-14-19c0-7 6-13 14-13z" fill="#FFB020"/>
+        <path d="M52 96l6 2-2 6-6-2 2-6z" fill="#FFB020"/>
+        <circle cx="46" cy="52" r="5" fill="#fff" opacity=".7"/>
+      </svg>
+      <div class="float-card fc2">🇪🇸 <span data-i18n="art2">Consulta en español</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- EMERGENCY -->
+<div class="emergency">
+  <div class="container">
+    <span class="em-icon">🚑</span>
+    <p><strong data-i18n="em_t">Emergency?</strong> <span data-i18n="em_b">Chest pain, difficulty breathing, heavy bleeding, or someone unconscious — call 119 (ambulance) right now. It is free in Japan. Don't wait for us.</span></p>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2 data-i18n="sv_h2">How we help you</h2>
+    <p class="sec-sub" data-i18n="sv_sub">We are nurses — your guide through the Japanese medical system. Here's what a consultation gives you.</p>
+    <div class="grid grid-2 grid-5">
+      <div class="card"><div class="ico">🩺</div><h3 data-i18n="sv1_t">Symptom check</h3><p data-i18n="sv1_b">Tell us how you feel. A nurse listens carefully and helps you understand how urgent your situation is.</p></div>
+      <div class="card"><div class="ico">🏥</div><h3 data-i18n="sv2_t">Which department?</h3><p data-i18n="sv2_b">Japanese hospitals are divided by specialty. We tell you exactly which department to visit — internal medicine, orthopedics, ENT…</p></div>
+      <div class="card"><div class="ico">📍</div><h3 data-i18n="sv3_t">Hospital search</h3><p data-i18n="sv3_b">We find hospitals or clinics near you that welcome foreign patients — with English or Spanish support whenever possible.</p></div>
+      <div class="card"><div class="ico">🎒</div><h3 data-i18n="sv4_t">Before your visit</h3><p data-i18n="sv4_b">What to bring (passport, travel insurance), roughly what it costs, and a Japanese "symptom card" you can show at reception.</p></div>
+      <div class="card"><div class="ico">🩹</div><h3 data-i18n="sv5_t">First-aid guidance</h3><p data-i18n="sv5_b">General self-care advice for minor issues — fever, stomach ache, small injuries — while you decide whether to see a doctor.</p></div>
+    </div>
+    <div class="notebox">
+      <span class="em-icon">ℹ️</span>
+      <p><b data-i18n="nb_t">We are nurses, not doctors.</b> <span data-i18n="nb_b">We do not diagnose, treat, or prescribe medicine. We give you guidance on where to go, general health advice, and support in judging whether you need emergency care. The final decision to visit a hospital is always yours.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <h2 data-i18n="hw_h2">Easy in 3 steps</h2>
+    <p class="sec-sub" data-i18n="hw_sub">No app to install, no complicated registration. Contact us the way you like.</p>
+    <div class="grid grid-3">
+      <div class="step"><div class="step-num">1</div><h3 data-i18n="hw1_t">Contact us</h3><p data-i18n="hw1_b">Send a message on LINE or WhatsApp, or just call. Tell us your language: English, español, or やさしい日本語.</p></div>
+      <div class="step"><div class="step-num">2</div><h3 data-i18n="hw2_t">Talk to a nurse</h3><p data-i18n="hw2_b">A licensed nurse asks about your symptoms, your location, and your travel insurance. Usually 5–10 minutes.</p></div>
+      <div class="step"><div class="step-num">3</div><h3 data-i18n="hw3_t">Get your plan</h3><p data-i18n="hw3_b">You receive the right department, nearby hospital options, a preparation checklist, and a written summary in Japanese to show at the hospital.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPANISH -->
+<section id="spanish">
+  <div class="container es-wrap">
+    <div>
+      <span class="es-flag">🇪🇸 🇲🇽 🇵🇪 🇨🇴 🇦🇷 Atención en español</span>
+      <h2 data-i18n="es_h2">Spanish support — our specialty</h2>
+      <p class="sec-sub" data-i18n="es_sub">Very few medical support services in Japan speak Spanish. Ours does. Explain your symptoms in your own language, with calm — sin estrés, sin traducir.</p>
+      <ul class="es-points">
+        <li><span class="ck">✓</span><span data-i18n="es_p1">Nurses who consult directly in Spanish — not machine translation</span></li>
+        <li><span class="ck">✓</span><span data-i18n="es_p2">Symptom summary written in Japanese for the hospital</span></li>
+        <li><span class="ck">✓</span><span data-i18n="es_p3">Guidance on Japanese hospital manners, costs and travel insurance</span></li>
+      </ul>
+    </div>
+    <blockquote class="quote">
+      «Me enfermé en Kioto y no sabía a dónde ir. La enfermera me escuchó en español, me dijo a qué clínica ir y qué llevar. Me sentí acompañada todo el tiempo.»
+      <footer data-i18n="es_qf">— Traveler from Mexico City (sample testimonial)</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <h2 data-i18n="pr_h2">Simple pricing</h2>
+    <p class="sec-sub" data-i18n="pr_sub">Pay by credit card or PayPal after the consultation. No hidden fees.</p>
+    <div class="grid grid-3">
+      <div class="card price-card">
+        <h3 data-i18n="p1_t">Quick Consult</h3>
+        <div class="price">¥2,000 <small data-i18n="p1_m">/ 15 min</small></div>
+        <ul>
+          <li><span class="ck">✓</span><span data-i18n="p1_1">Symptom check with a nurse</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p1_2">Urgency guidance (see a doctor today? tomorrow?)</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p1_3">Which department to visit</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-i18n="p_cta">Choose</a>
+      </div>
+      <div class="card price-card popular">
+        <span class="tag" data-i18n="p2_tag">★ Most popular</span>
+        <h3 data-i18n="p2_t">Standard Consult</h3>
+        <div class="price">¥3,500 <small data-i18n="p2_m">/ 30 min</small></div>
+        <ul>
+          <li><span class="ck">✓</span><span data-i18n="p2_1">Everything in Quick Consult</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p2_2">Nearby hospital search (foreigner-friendly)</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p2_3">Preparation checklist + cost estimate</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p2_4">Japanese symptom card to show at reception</span></li>
+        </ul>
+        <a class="btn btn-call" href="#contact" data-i18n="p_cta2">Choose</a>
+      </div>
+      <div class="card price-card">
+        <h3 data-i18n="p3_t">Full Support</h3>
+        <div class="price">¥6,000 <small data-i18n="p3_m">/ package</small></div>
+        <ul>
+          <li><span class="ck">✓</span><span data-i18n="p3_1">Everything in Standard Consult</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p3_2">We call the hospital to check availability for you</span></li>
+          <li><span class="ck">✓</span><span data-i18n="p3_3">Follow-up messages the same day</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact" data-i18n="p_cta3">Choose</a>
+      </div>
+    </div>
+    <p class="price-note" data-i18n="pr_note">Emergency judgment is always free: if we believe you need an ambulance, we tell you immediately at no charge and help you call 119.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container" style="max-width:760px">
+    <h2>FAQ</h2>
+    <p class="sec-sub" data-i18n="fq_sub">Common questions from travelers</p>
+    <details><summary data-i18n="q1">Is this a medical diagnosis?</summary><p data-i18n="a1">No. We are licensed nurses, not doctors. We do not diagnose illnesses, provide treatment, or prescribe medicine. We help you understand your symptoms in general terms, decide where to seek care, and prepare for your hospital visit.</p></details>
+    <details><summary data-i18n="q2">What languages do you support?</summary><p data-i18n="a2">English, Spanish, and easy Japanese (やさしい日本語). Spanish is our specialty — our nurses consult directly in Spanish, without machine translation.</p></details>
+    <details><summary data-i18n="q3">Can you find a hospital that accepts my travel insurance?</summary><p data-i18n="a3">We help you check. Tell us your insurance company, and we will look for hospitals with cashless service or explain how to pay first and claim reimbursement later. Please have your policy documents ready.</p></details>
+    <details><summary data-i18n="q4">How much does a hospital visit cost in Japan?</summary><p data-i18n="a4">Without insurance, a typical clinic visit costs about ¥5,000–¥15,000; emergency or hospital care costs more. We give you a rough estimate before you go, so there are no surprises.</p></details>
+    <details><summary data-i18n="q5">What are your hours? What about the middle of the night?</summary><p data-i18n="a5">We answer from 8:00 to 22:00 JST every day. Outside these hours, for anything urgent, call 119 (ambulance) or visit an emergency hospital. The Japan Visitor Hotline (050-3816-2787) also operates 24/7.</p></details>
+    <details><summary data-i18n="q6">Can you interpret for me at the hospital?</summary><p data-i18n="a6">We do not send staff to hospitals, but we prepare a written symptom summary in Japanese that you can show to the doctor, and we can suggest phone-interpretation options that many hospitals use.</p></details>
+    <details><summary data-i18n="q7">How do I pay?</summary><p data-i18n="a7">Credit card or PayPal, after your consultation. We send you a secure payment link by LINE, WhatsApp, or email.</p></details>
+  </div>
+</section>
+
+<!-- NOTICE -->
+<section id="notice" style="padding-top:0;background:var(--soft)">
+  <div class="container" style="max-width:760px">
+    <div class="notice">
+      <b data-i18n="nt_t">Important notice</b>
+      <ul>
+        <li data-i18n="nt1">This service is provided by licensed nurses and is not a medical institution. We do not perform diagnosis, treatment, or prescription of medicine.</li>
+        <li data-i18n="nt2">Our guidance is general information to support your decisions. It does not replace examination by a doctor.</li>
+        <li data-i18n="nt3">In case of severe symptoms (chest pain, difficulty breathing, heavy bleeding, loss of consciousness, stroke signs), call 119 immediately.</li>
+        <li data-i18n="nt4">The decision on which medical institution to visit, and all medical decisions, rest with you and the examining doctor.</li>
+        <li data-i18n="nt5">Consultation fees do not include hospital fees, medicine, or transportation.</li>
+        <li data-i18n="nt6">Your personal and health information is used only to provide this service and is handled confidentially.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 data-i18n="ct_h2">Talk to a nurse now</h2>
+    <p class="sec-sub" data-i18n="ct_sub">Choose whichever is easiest for you. We reply in your language.</p>
+    <div class="contact-grid">
+      <div class="contact-btns">
+        <a class="contact-btn" href="https://line.me/R/ti/p/@nurseguidejp" target="_blank" rel="noopener"><div class="bi bi-line">💬</div><div><b>LINE</b><span data-i18n="ct_line">Add us: @nurseguidejp — popular in Japan & Asia</span></div></a>
+        <a class="contact-btn" href="https://wa.me/819000000000" target="_blank" rel="noopener"><div class="bi bi-wa">💬</div><div><b>WhatsApp</b><span data-i18n="ct_wa">+81 90-0000-0000 — message or voice call</span></div></a>
+        <a class="contact-btn" href="tel:+819000000000"><div class="bi bi-tel">📞</div><div><b data-i18n="ct_tel_t">Phone</b><span data-i18n="ct_tel">+81 90-0000-0000 (8:00–22:00 JST)</span></div></a>
+        <a class="contact-btn" href="mailto:ghjapan2025@gmail.com"><div class="bi bi-mail">✉️</div><div><b data-i18n="ct_mail_t">Email</b><span data-i18n="ct_mail">For non-urgent questions — reply within 24h</span></div></a>
+      </div>
+      <form onsubmit="return sendForm(event)">
+        <h3 data-i18n="fm_t">Or send us a message</h3>
+        <label data-i18n="fm_name">Your name</label>
+        <input type="text" id="f-name" required>
+        <label data-i18n="fm_lang">Preferred language</label>
+        <select id="f-lang">
+          <option>English</option>
+          <option>Español</option>
+          <option data-i18n="fm_lang_ja">Easy Japanese</option>
+        </select>
+        <label data-i18n="fm_contact">How can we reach you? (LINE ID / WhatsApp / phone / email)</label>
+        <input type="text" id="f-contact" required>
+        <label data-i18n="fm_msg">Your symptoms or question</label>
+        <textarea id="f-msg" rows="4" required></textarea>
+        <button class="btn btn-call" type="submit" data-i18n="fm_send">Send message</button>
+        <p class="hours" data-i18n="fm_note">If this is urgent, please use LINE, WhatsApp, or phone instead.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="logo"><div class="cross">✚</div><div>Nurse Guide Japan</div></div>
+    <p data-i18n="ft_1">Nurse-led hospital navigation and general health guidance for international travelers in Japan. English · Español · やさしい日本語.</p>
+    <p style="margin-top:10px" data-i18n="ft_2">This is not a medical institution and does not provide diagnosis, treatment, or prescriptions. In an emergency, call 119.</p>
+    <p style="margin-top:14px;opacity:.7">© 2026 Nurse Guide Japan</p>
+  </div>
+</footer>
+
+<!-- sticky mobile CTA -->
+<div class="mobile-bar">
+  <a class="mb-line" href="https://line.me/R/ti/p/@nurseguidejp" target="_blank" rel="noopener">💬 LINE</a>
+  <a class="mb-wa" href="https://wa.me/819000000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a class="mb-tel" href="tel:+819000000000">📞 <span data-i18n="mb_call">Call</span></a>
+</div>
+
+<script>
+const T = {
+en:{}, /* English is written in the HTML itself and captured on load */
+es:{
+logo_sub:"Orientación médica por enfermeras para viajeros",
+nav_cta:"Hablar con una enfermera",
+hero_h1:"¿Te sientes mal durante tu viaje a Japón?",
+hero_lead:"Habla con una enfermera japonesa titulada por teléfono u online — en español, inglés o japonés fácil. Escuchamos tus síntomas y te guiamos al hospital adecuado, con calma y claridad.",
+cta_call:"Llamar ahora",
+chip1:"✓ Enfermeras tituladas en Japón",
+chip2:"✓ 8:00–22:00 JST, todos los días",
+chip3:"✓ Respuesta en 10 min (objetivo)",
+art1:"Enfermera en línea",
+art2:"Consulta en español",
+em_t:"¿Emergencia?",
+em_b:"Dolor de pecho, dificultad para respirar, sangrado abundante o pérdida de conciencia: llama al 119 (ambulancia) ahora mismo. Es gratis en Japón. No nos esperes.",
+sv_h2:"Cómo te ayudamos",
+sv_sub:"Somos enfermeras: tu guía en el sistema médico japonés. Esto es lo que recibes en una consulta.",
+sv1_t:"Escuchamos tus síntomas",sv1_b:"Cuéntanos cómo te sientes. Una enfermera te escucha con atención y te ayuda a entender qué tan urgente es tu situación.",
+sv2_t:"¿Qué especialidad?",sv2_b:"Los hospitales japoneses se dividen por especialidades. Te decimos exactamente a qué departamento ir: medicina interna, traumatología, otorrino…",
+sv3_t:"Búsqueda de hospital",sv3_b:"Buscamos hospitales o clínicas cerca de ti que reciban pacientes extranjeros, con atención en español o inglés cuando sea posible.",
+sv4_t:"Antes de tu visita",sv4_b:"Qué llevar (pasaporte, seguro de viaje), cuánto cuesta aproximadamente, y una \"tarjeta de síntomas\" en japonés para mostrar en recepción.",
+sv5_t:"Primeros auxilios",sv5_b:"Consejos generales de autocuidado para molestias leves — fiebre, dolor de estómago, heridas pequeñas — mientras decides si ver a un médico.",
+nb_t:"Somos enfermeras, no médicos.",
+nb_b:"No diagnosticamos, no tratamos ni recetamos medicamentos. Te orientamos sobre a dónde ir, te damos consejos generales de salud y te ayudamos a decidir si necesitas atención de emergencia. La decisión final de ir al hospital siempre es tuya.",
+hw_h2:"Fácil, en 3 pasos",
+hw_sub:"Sin apps que instalar, sin registros complicados. Contáctanos como prefieras.",
+hw1_t:"Contáctanos",hw1_b:"Envía un mensaje por LINE o WhatsApp, o simplemente llama. Dinos tu idioma: español, inglés o japonés fácil.",
+hw2_t:"Habla con la enfermera",hw2_b:"Una enfermera titulada te pregunta por tus síntomas, tu ubicación y tu seguro de viaje. Normalmente 5–10 minutos.",
+hw3_t:"Recibe tu plan",hw3_b:"Recibes la especialidad correcta, opciones de hospitales cercanos, una lista de preparación y un resumen escrito en japonés para mostrar en el hospital.",
+es_h2:"Atención en español: nuestra especialidad",
+es_sub:"Muy pocos servicios de apoyo médico en Japón hablan español. El nuestro sí. Explica tus síntomas en tu idioma, con calma — sin estrés, sin traducir.",
+es_p1:"Enfermeras que atienden directamente en español, sin traducción automática",
+es_p2:"Resumen de síntomas escrito en japonés para el hospital",
+es_p3:"Orientación sobre costumbres de los hospitales japoneses, costos y seguro de viaje",
+es_qf:"— Viajera de Ciudad de México (testimonio de ejemplo)",
+pr_h2:"Precios simples",
+pr_sub:"Paga con tarjeta de crédito o PayPal después de la consulta. Sin cargos ocultos.",
+p1_t:"Consulta rápida",p1_m:"/ 15 min",
+p1_1:"Revisión de síntomas con una enfermera",p1_2:"Orientación sobre urgencia (¿médico hoy? ¿mañana?)",p1_3:"Qué especialidad visitar",
+p2_tag:"★ Más popular",p2_t:"Consulta estándar",p2_m:"/ 30 min",
+p2_1:"Todo lo de la consulta rápida",p2_2:"Búsqueda de hospitales cercanos (amigables con extranjeros)",p2_3:"Lista de preparación + costo estimado",p2_4:"Tarjeta de síntomas en japonés para recepción",
+p3_t:"Apoyo completo",p3_m:"/ paquete",
+p3_1:"Todo lo de la consulta estándar",p3_2:"Llamamos al hospital por ti para confirmar disponibilidad",p3_3:"Mensajes de seguimiento el mismo día",
+p_cta:"Elegir",p_cta2:"Elegir",p_cta3:"Elegir",
+pr_note:"La valoración de emergencia siempre es gratis: si creemos que necesitas una ambulancia, te lo decimos de inmediato sin costo y te ayudamos a llamar al 119.",
+fq_sub:"Preguntas frecuentes de viajeros",
+q1:"¿Esto es un diagnóstico médico?",a1:"No. Somos enfermeras tituladas, no médicos. No diagnosticamos enfermedades, no damos tratamiento ni recetamos medicamentos. Te ayudamos a entender tus síntomas en términos generales, decidir dónde buscar atención y prepararte para tu visita al hospital.",
+q2:"¿En qué idiomas atienden?",a2:"Español, inglés y japonés fácil (やさしい日本語). El español es nuestra especialidad: nuestras enfermeras atienden directamente en español, sin traducción automática.",
+q3:"¿Pueden encontrar un hospital que acepte mi seguro de viaje?",a3:"Te ayudamos a verificarlo. Dinos tu aseguradora y buscaremos hospitales con servicio \"cashless\" o te explicaremos cómo pagar primero y pedir el reembolso después. Ten a mano tu póliza.",
+q4:"¿Cuánto cuesta ir al médico en Japón?",a4:"Sin seguro, una consulta típica en clínica cuesta entre ¥5,000 y ¥15,000; la atención de emergencia u hospitalaria cuesta más. Te damos un estimado antes de ir, para que no haya sorpresas.",
+q5:"¿Cuál es su horario? ¿Y de madrugada?",a5:"Respondemos de 8:00 a 22:00 (hora de Japón) todos los días. Fuera de ese horario, si es urgente, llama al 119 (ambulancia) o ve a un hospital de emergencias. La Japan Visitor Hotline (050-3816-2787) funciona 24/7.",
+q6:"¿Pueden interpretar por mí en el hospital?",a6:"No enviamos personal a los hospitales, pero preparamos un resumen escrito de tus síntomas en japonés para mostrar al médico, y podemos sugerirte opciones de interpretación telefónica que usan muchos hospitales.",
+q7:"¿Cómo pago?",a7:"Con tarjeta de crédito o PayPal, después de tu consulta. Te enviamos un enlace de pago seguro por LINE, WhatsApp o correo.",
+nt_t:"Aviso importante",
+nt1:"Este servicio es prestado por enfermeras tituladas y no es una institución médica. No realizamos diagnóstico, tratamiento ni prescripción de medicamentos.",
+nt2:"Nuestra orientación es información general para apoyar tus decisiones. No sustituye la consulta con un médico.",
+nt3:"Ante síntomas graves (dolor de pecho, dificultad para respirar, sangrado abundante, pérdida de conciencia, señales de derrame), llama al 119 de inmediato.",
+nt4:"La decisión sobre qué institución médica visitar, y toda decisión médica, corresponde a ti y al médico que te atienda.",
+nt5:"Las tarifas de consulta no incluyen los costos del hospital, medicamentos ni transporte.",
+nt6:"Tu información personal y de salud se usa únicamente para prestar este servicio y se maneja de forma confidencial.",
+ct_h2:"Habla con una enfermera ahora",
+ct_sub:"Elige lo que te resulte más fácil. Respondemos en tu idioma.",
+ct_line:"Agréganos: @nurseguidejp — popular en Japón y Asia",
+ct_wa:"+81 90-0000-0000 — mensaje o llamada de voz",
+ct_tel_t:"Teléfono",ct_tel:"+81 90-0000-0000 (8:00–22:00 JST)",
+ct_mail_t:"Correo",ct_mail:"Para consultas no urgentes — respuesta en 24 h",
+fm_t:"O envíanos un mensaje",
+fm_name:"Tu nombre",fm_lang:"Idioma preferido",fm_lang_ja:"Japonés fácil",
+fm_contact:"¿Cómo te contactamos? (LINE / WhatsApp / teléfono / correo)",
+fm_msg:"Tus síntomas o tu pregunta",fm_send:"Enviar mensaje",
+fm_note:"Si es urgente, usa mejor LINE, WhatsApp o teléfono.",
+ft_1:"Orientación hospitalaria y consejos generales de salud por enfermeras, para viajeros internacionales en Japón. Español · English · やさしい日本語.",
+ft_2:"No somos una institución médica y no ofrecemos diagnóstico, tratamiento ni recetas. En una emergencia, llama al 119.",
+mb_call:"Llamar"
+},
+ja:{
+logo_sub:"看護師による 旅行者のための 病院あんない",
+nav_cta:"看護師に そうだん",
+hero_h1:"日本の旅行中に、からだの ぐあいが わるいですか?",
+hero_lead:"日本の看護師(かんごし)と 電話や オンラインで 話せます。英語・スペイン語・やさしい日本語で OK。症状(しょうじょう)を聞いて、あなたに合う 病院を あんないします。",
+cta_call:"電話する",
+chip1:"✓ 日本の資格を持つ看護師",
+chip2:"✓ 毎日 8:00〜22:00",
+chip3:"✓ 10分いないに へんじ(目標)",
+art1:"看護師が オンラインに います",
+art2:"スペイン語で そうだん できます",
+em_t:"きんきゅうの ときは?",
+em_b:"むねが いたい・いきが くるしい・血が たくさん出る・いしきが ない → すぐに 119(救急車)に 電話してください。無料です。わたしたちへの れんらくは あとで だいじょうぶです。",
+sv_h2:"できること",
+sv_sub:"わたしたちは 看護師です。日本の病院の しくみを あんないします。",
+sv1_t:"症状を 聞きます",sv1_b:"どこが つらいか 教えてください。看護師が ていねいに 聞いて、いそぐ ひつようが あるか いっしょに 考えます。",
+sv2_t:"何科に 行く?",sv2_b:"日本の病院は「内科」「整形外科」など 科に分かれています。あなたが 行くべき 科を 教えます。",
+sv3_t:"近くの 病院を さがす",sv3_b:"あなたの近くで、外国人を うけいれている 病院・クリニックを さがします。英語・スペイン語が つうじる ところを できるだけ えらびます。",
+sv4_t:"病院に 行く前の じゅんび",sv4_b:"持っていく物(パスポート・海外旅行保険)、だいたいの お金、受付で 見せる「症状カード(日本語)」を 用意します。",
+sv5_t:"応急対応(おうきゅうたいおう)",sv5_b:"熱・おなかの いたみ・小さな けが など、軽い症状の 一般的な セルフケアを あんないします。",
+nb_t:"わたしたちは 看護師です。医師では ありません。",
+nb_b:"診断(しんだん)・治療(ちりょう)・薬の処方(しょほう)は しません。どこに行くか、一般的な 健康のアドバイス、救急車が ひつようかどうかの 判断を おてつだいします。病院に行くかどうかの さいごの決定は あなたが します。",
+hw_h2:"かんたん 3ステップ",
+hw_sub:"アプリの インストールも、むずかしい 登録も いりません。",
+hw1_t:"れんらくする",hw1_b:"LINE か WhatsApp で メッセージを 送るか、電話してください。ことば(英語・スペイン語・やさしい日本語)を 教えてください。",
+hw2_t:"看護師と 話す",hw2_b:"看護師が 症状・いる場所・旅行保険について 聞きます。だいたい 5〜10分です。",
+hw3_t:"あんないを もらう",hw3_b:"行くべき科、近くの病院、じゅんびリスト、病院で見せる 日本語のメモを もらえます。",
+es_h2:"スペイン語対応が じまんです",
+es_sub:"日本で スペイン語が つうじる 医療サポートは とても少ないです。わたしたちは スペイン語で 直接 話せます。",
+es_p1:"看護師が スペイン語で 直接 対応(機械翻訳では ありません)",
+es_p2:"病院で見せる 日本語の症状メモを 作ります",
+es_p3:"日本の病院の ルール・お金・旅行保険も あんないします",
+es_qf:"— メキシコシティからの旅行者(サンプルの声)",
+pr_h2:"わかりやすい 料金",
+pr_sub:"そうだんの あとで、クレジットカードか PayPal で はらえます。追加料金は ありません。",
+p1_t:"クイックそうだん",p1_m:"/ 15分",
+p1_1:"看護師が 症状を 聞きます",p1_2:"いそぐか どうかの あんない(今日 行く? 明日でいい?)",p1_3:"行くべき 科を 教えます",
+p2_tag:"★ いちばん人気",p2_t:"スタンダードそうだん",p2_m:"/ 30分",
+p2_1:"クイックそうだんの 内容 ぜんぶ",p2_2:"近くの病院さがし(外国人OK)",p2_3:"じゅんびリスト+お金の めやす",p2_4:"受付で見せる 日本語の症状カード",
+p3_t:"フルサポート",p3_m:"/ セット",
+p3_1:"スタンダードそうだんの 内容 ぜんぶ",p3_2:"病院に 電話して、行けるか かくにんします",p3_3:"同じ日に フォローアップの メッセージ",
+p_cta:"えらぶ",p_cta2:"えらぶ",p_cta3:"えらぶ",
+pr_note:"きんきゅうの 判断は いつも 無料です。救急車が ひつようだと 思ったら、すぐ 無料で 伝えて、119の 電話も てつだいます。",
+fq_sub:"よくある しつもん",
+q1:"これは 医師の診断ですか?",a1:"いいえ。わたしたちは 看護師で、医師では ありません。診断・治療・薬の処方は しません。症状の 一般的な せつめい、どこに行くかの あんない、病院に行く じゅんびを おてつだいします。",
+q2:"どの ことばが つかえますか?",a2:"英語・スペイン語・やさしい日本語です。スペイン語が とくいです。看護師が 直接 スペイン語で 話します。",
+q3:"わたしの旅行保険が つかえる病院を さがせますか?",a3:"いっしょに かくにんします。保険会社の名前を 教えてください。キャッシュレスで はらえる病院を さがすか、先に はらって あとで お金を もらう方法を せつめいします。",
+q4:"日本の病院は いくら かかりますか?",a4:"保険なしの場合、クリニックは だいたい ¥5,000〜¥15,000です。救急や 入院は もっと かかります。行く前に めやすを 伝えます。",
+q5:"何時から 何時まで ですか? 夜中は?",a5:"毎日 8:00〜22:00(日本時間)です。それ以外の時間で いそぐときは、119(救急車)か 救急病院へ。Japan Visitor Hotline(050-3816-2787)は 24時間 つかえます。",
+q6:"病院で 通訳(つうやく)して もらえますか?",a6:"病院には 行きませんが、医師に見せる 日本語の症状メモを 作ります。多くの病院が つかう 電話通訳の ほうほうも 教えます。",
+q7:"お金は どうやって はらいますか?",a7:"そうだんの あとに、クレジットカードか PayPal で はらえます。LINE・WhatsApp・メールで 安全な リンクを 送ります。",
+nt_t:"たいせつな お知らせ",
+nt1:"このサービスは 看護師が おこなうもので、医療機関では ありません。診断・治療・薬の処方は しません。",
+nt2:"あんないは 一般的な 情報です。医師の 診察の かわりには なりません。",
+nt3:"重い症状(むねの いたみ・いきが くるしい・多い出血・いしきが ない など)のときは、すぐ 119に 電話してください。",
+nt4:"どの病院に 行くか、医療の 決定は、あなたと 診察する医師が おこないます。",
+nt5:"そうだん料金に、病院代・薬代・交通費は ふくまれません。",
+nt6:"あなたの 個人情報・健康情報は、このサービスのためだけに つかい、たいせつに まもります。",
+ct_h2:"いま 看護師と 話す",
+ct_sub:"いちばん かんたんな 方法を えらんでください。あなたの ことばで へんじします。",
+ct_line:"友だち追加: @nurseguidejp",
+ct_wa:"+81 90-0000-0000 — メッセージか 音声通話",
+ct_tel_t:"電話",ct_tel:"+81 90-0000-0000(8:00〜22:00)",
+ct_mail_t:"メール",ct_mail:"いそがない しつもんは こちら — 24時間いないに へんじ",
+fm_t:"フォームで 送る",
+fm_name:"名前",fm_lang:"つかいたい ことば",fm_lang_ja:"やさしい日本語",
+fm_contact:"れんらく方法(LINE / WhatsApp / 電話 / メール)",
+fm_msg:"症状や しつもん",fm_send:"送る",
+fm_note:"いそぐときは LINE・WhatsApp・電話を つかってください。",
+ft_1:"日本を旅行する 外国人のための、看護師による 病院あんないと 健康そうだん。English · Español · やさしい日本語。",
+ft_2:"医療機関では ありません。診断・治療・処方は しません。きんきゅうのときは 119へ。",
+mb_call:"電話"
+}};
+
+/* capture English defaults from the HTML */
+document.querySelectorAll('[data-i18n]').forEach(el=>{T.en[el.dataset.i18n]=el.innerHTML;});
+
+function setLang(l){
+  const dict=T[l]||T.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    el.innerHTML=(dict[k]!==undefined)?dict[k]:T.en[k];
+  });
+  document.documentElement.lang = l==='ja'?'ja':l;
+  ['en','es','ja'].forEach(x=>document.getElementById('lang-'+x).classList.toggle('active',x===l));
+  try{localStorage.setItem('ngj-lang',l);}catch(e){}
+}
+try{const saved=localStorage.getItem('ngj-lang');if(saved&&T[saved])setLang(saved);}catch(e){}
+
+function sendForm(e){
+  e.preventDefault();
+  const n=document.getElementById('f-name').value,
+        l=document.getElementById('f-lang').value,
+        c=document.getElementById('f-contact').value,
+        m=document.getElementById('f-msg').value;
+  /* 簡易実装: メールソフトを開く。本番では Formspree / Googleフォーム等に差し替え推奨 */
+  location.href='mailto:ghjapan2025@gmail.com?subject='+encodeURIComponent('[Nurse Guide Japan] '+n)+'&body='+encodeURIComponent('Name: '+n+'\nLanguage: '+l+'\nContact: '+c+'\n\n'+m);
+  return false;
+}
+</script>
+</body>
+</html>
